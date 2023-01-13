@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "deforumed-walk"
+version = "0.1.0"
+description = "Take a walk in generated world."
+authors = ["IzumiSatoshi <izumisatoshi05@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "deforumed_walk"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.24.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
