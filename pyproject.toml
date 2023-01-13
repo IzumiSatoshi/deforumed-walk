@@ -17,6 +17,9 @@ timm = "^0.6.12"
 einops = "^0.6.0"
 numpngw = "^0.1.2"
 matplotlib = "^3.6.3"
+py3d = "^0.0.70"
+sympy = "^1.11.1"
+pygame = "^2.1.2"
 
 
 [tool.poetry.group.dev.dependencies]
