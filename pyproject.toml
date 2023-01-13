@@ -5,7 +5,7 @@ description = "Take a walk in generated world."
 authors = ["IzumiSatoshi <izumisatoshi05@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "deforumed_walk"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -16,7 +16,11 @@ opencv-python = "^4.7.0.68"
 timm = "^0.6.12"
 einops = "^0.6.0"
 numpngw = "^0.1.2"
+matplotlib = "^3.6.3"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.20.1"
 
 [build-system]
 requires = ["poetry-core"]

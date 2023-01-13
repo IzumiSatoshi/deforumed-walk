@@ -11,8 +11,8 @@ from numpngw import write_png
 from einops import rearrange, repeat
 from PIL import Image
 
-from midas.dpt_depth import DPTDepthModel
-from midas.transforms import Resize, NormalizeImage, PrepareForNet
+from src.midas.dpt_depth import DPTDepthModel
+from src.midas.transforms import Resize, NormalizeImage, PrepareForNet
 
 
 class DepthModel:
@@ -85,7 +85,7 @@ class DepthModel:
 
         return depth_tensor
 
-    def save(self, filename: str, depth: torch.Tensor):
+    def save_depth(self, filename: str, depth: torch.Tensor):
         bit_depth_output = 16
 
         depth = depth.cpu().numpy()
@@ -114,11 +114,3 @@ class DepthModel:
             cv2.imwrite(filename.replace(".png", ".exr"), temp_image)
         else:  # 8 bit
             Image.fromarray(temp_image.astype(np.uint8)).save(filename)
-
-
-if __name__ == "__main__":
-    model = DepthModel(torch.device("cuda"), "./models/dpt_large_384.pt", False)
-    img = cv2.imread("./data/girl.jpg")
-
-    depth = model.predict(img)
-    model.save("./data/test_depth.png", depth)
