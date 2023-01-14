@@ -3,6 +3,7 @@ import cv2
 import math
 import numpy as np
 import os
+import PIL
 import torch
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
@@ -54,7 +55,11 @@ class DepthModel:
 
         self.model.to(self.device)
 
-    def predict(self, prev_img_cv2) -> torch.Tensor:
+    def predict(self, prev_img: PIL.Image) -> torch.Tensor:
+        # pil image to cv2 image
+        prev_img_cv2 = np.array(prev_img)
+        prev_img_cv2 = prev_img_cv2[:, :, ::-1]
+
         # convert image from 0->255 uint8 to 0->1 float for feeding to MiDaS
         img = prev_img_cv2.astype(np.float32) / 255.0
         img_input = self.transform({"image": img})["image"]

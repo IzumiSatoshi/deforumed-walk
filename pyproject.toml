@@ -20,6 +20,9 @@ matplotlib = "^3.6.3"
 py3d = "^0.0.70"
 sympy = "^1.11.1"
 pygame = "^2.1.2"
+diffusers = "^0.11.1"
+accelerate = "^0.15.0"
+transformers = "^4.25.1"
 
 
 [tool.poetry.group.dev.dependencies]
