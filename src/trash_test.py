@@ -1,12 +1,16 @@
 import numpy as np
+from types import SimpleNamespace
 
-# fmt: off
-A = np.array(
-    [[1, 0, 0, 5], 
-     [0, 1, 0, 5], 
-     [0, 0, 1, 5]]
-)
 
-x = np.array([1, 2, 3, 1])
+def args():
+    def TR_callback(args):
+        print("TR_callback called")
+        print(args.hoge)
 
-print(A @ x)
+    hoge = "hoge"
+    return locals()
+
+
+ar = args()
+ar = SimpleNamespace(**ar)
+ar.TR_callback(ar)
