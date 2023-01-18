@@ -17,3 +17,4 @@ Take a walk in the generated world.
 - upgrade midas
 - change midas to stronger
 - use DDIM?
+- prompt engineering for sure
