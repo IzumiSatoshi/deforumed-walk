@@ -90,7 +90,7 @@ class DepthModel:
 
         return depth_tensor
 
-    def save_depth(self, filename: str, depth: torch.Tensor):
+    def to_pil(self, depth: torch.Tensor):
         bit_depth_output = 16
 
         depth = depth.cpu().numpy()
@@ -98,7 +98,6 @@ class DepthModel:
             depth = np.expand_dims(depth, axis=0)
         self.depth_min = min(self.depth_min, depth.min())
         self.depth_max = max(self.depth_max, depth.max())
-        print(f"  depth min:{depth.min()} max:{depth.max()}")
         denom = max(1e-8, self.depth_max - self.depth_min)
         denom_bitdepth_multiplier = {
             8: 255,
@@ -112,10 +111,5 @@ class DepthModel:
             "c h w -> h w c",
         )
         temp_image = repeat(temp_image, "h w 1 -> h w c", c=3)
-        if bit_depth_output == 16:
-            write_png(filename, temp_image.astype(np.uint16))
-        elif bit_depth_output == 32:
-            os.environ["OPENCV_IO_ENABLE_OPENEXR"] = "1"
-            cv2.imwrite(filename.replace(".png", ".exr"), temp_image)
-        else:  # 8 bit
-            Image.fromarray(temp_image.astype(np.uint8)).save(filename)
+        temp_image = temp_image.astype(np.uint8)
+        return temp_image

@@ -28,6 +28,7 @@ mmcv = "^1.7.1"
 albumentations = "^1.3.0"
 tensorboardx = "^2.5.1"
 gdown = "^4.6.0"
+tensorboard = "^2.11.2"
 
 
 [tool.poetry.group.dev.dependencies]
