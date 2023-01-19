@@ -134,3 +134,4 @@ dmypy.json
 # ignore mine
 data
 models
+MIM-Depth-Estimation
