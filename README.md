@@ -6,7 +6,7 @@ Take a walk in the generated world.
 
 - use depth map to avoid changing camera angle at i2i
 
-## use full
+## convenient
 
 - implement hybrid t2i and i2i pipeline
 
@@ -18,3 +18,7 @@ Take a walk in the generated world.
 - change midas to stronger
 - use DDIM?
 - prompt engineering for sure
+
+## speed up
+
+- Avoid overlapping depth models between pipe and dsd
